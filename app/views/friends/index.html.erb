@@ -1,0 +1,31 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Twitter</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @friends.each do |friend | %>
+      <tr>
+        <th scope="row"><%= friend.id %></th>
+        <td><%= friend.first_name %></td>
+        <td><%= friend.last_name %></td>
+        <td><%= friend.email %></td>
+        <td><%= friend.phone %></td>
+        <td><%= friend.twitter %></td>
+        <td>
+          <%= link_to "Show", friend_path(friend), class:"btn btn-primary" %>
+          <%= link_to "Edit", edit_friend_path(friend), class:"btn btn-warning" %>
+          <%= link_to "Delete", friend_path(friend), method: :delete, data: { confirm: "Are you sure?" }, class:"btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to "New friend", new_friend_path, class:"btn btn-secondary" %>
